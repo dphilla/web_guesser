@@ -2,9 +2,9 @@ require 'sinatra'
 require 'sinatra/reloader'
 
 
-rand_num = rand(101)    #placing outside of scope of getter method mean only
+random_number = rand(101)    #placing outside of scope of getter method mean only
                         # hitting the first call of rand on each refresh
 
 get '/' do
-  "The secret number is #{rand_num}"
+  erb :index, :locals => {:number => random_number}
 end
