@@ -17,18 +17,16 @@ end
 
 def check_guess(guess)
   message = ""
-  if guess.to_i > SECRET_NUMBER
+  if guess != nil && guess.to_i - SECRET_NUMBER < -5
+    message = "Wayy to low!"
+  elsif guess.to_i - SECRET_NUMBER > 5
+    message = "Wayy to high!"
+  elsif guess.to_i > SECRET_NUMBER
     message = "Too high!"
   elsif  guess != nil && guess.to_i < SECRET_NUMBER
     message = "Too low!"
   elsif guess.to_i == SECRET_NUMBER
     message =  "Correct! The secret number was #{SECRET_NUMBER}"
   end
-  message
-end
-
-def way_to_high_or_low(guess)
-  message = "Wayy to high!" if (guess.to_i + 5) > SECRET_NUMBER
-  message = "Wayy to low!"  if (guess.to_i - 5) <  SECRET_NUMBER
   message
 end
