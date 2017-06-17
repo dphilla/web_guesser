@@ -2,10 +2,8 @@ require 'sinatra'
 require 'sinatra/reloader'
 
 
-#what about dealing with inheritance here?
 
-SECRET_NUMBER = rand(101)    #placing outside of scope of getter method mean only
-                        # hitting the first call of rand on each refresh
+SECRET_NUMBER = rand(101)
 
 get '/' do
    guess = params['guess']
@@ -13,14 +11,12 @@ get '/' do
    erb :index, :locals => {:number => SECRET_NUMBER, :message => message}
 end
 
-# add some kinda loop limiting what is displayed and when?
-
 def check_guess(guess)
   message = ""
   if guess != nil && guess.to_i - SECRET_NUMBER < -5
-    message = "Wayy to low!"
+    message = "Wayy too low!"
   elsif guess.to_i - SECRET_NUMBER > 5
-    message = "Wayy to high!"
+    message = "Wayy too high!"
   elsif guess.to_i > SECRET_NUMBER
     message = "Too high!"
   elsif  guess != nil && guess.to_i < SECRET_NUMBER
