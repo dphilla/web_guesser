@@ -1,31 +1,37 @@
 <html>
   <head>
-    <% if message == "Wayy too low!" || message == "Wayy too high!" %>
-        <style>
-         body {
-           background: red;
-              }
-        </style>
-      <% elsif message == "Too low!" || message == "Too high!" %>
-        <style>
-         body {
-           background: mistyrose;
-              }
-        </style>
-      <% elsif message == "Correct! The secret number was #{SECRET_NUMBER}" %>
-        <style>
-         body {
-           background: green;
-              }
-        </style>
-      <% end %>
+
   </head>
     <body>
+      <% if message == "Wayy too low!" || message == "Wayy too high!" %>
+          <style>
+           body {
+             background: red;
+                }
+          </style>
+        <% elsif message == "Too low!" || message == "Too high!" %>
+          <style>
+           body {
+             background: mistyrose;
+                }
+          </style>
+        <% elsif message == "Correct! The secret number was #{SECRET_NUMBER}" %>
+          <style>
+           body {
+             background: green;
+                }
+          </style>
+        <% end %>
       <p>
         <%= message %>
+        <br>
+        <% if params[:cheat] %>
+        <%= "here you go, cheater: #{SECRET_NUMBER}" %>
+        <% end %>
       </p>
     </body>
 </html>
+
 
 <form>
     <input type= 'text' name= 'guess' />
